@@ -3,203 +3,382 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Pick a comment for PIXELUP's launch</title>
-<meta name="description" content="Pick a comment, copy it, and drop it on PIXELUP's launch post on X.">
+<title>Launch day brief - PIXELUP LABS</title>
+<meta name="description" content="Pick a comment and drop it on PIXELUP LABS' launch post on X.">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔥</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Instrument+Sans:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #FFD23F;
-    --ink: #14162B;
-    --card: #FFFFFF;
-    --soft: #4A4D66;
-    --grid: rgba(20, 22, 43, 0.07);
-    --cobalt: #2B44FF;
-    --on-cobalt: #FFFFFF;
-    --pick: #2B44FF;
-    color-scheme: light;
+    --bg: #000000;
+    --panel: #141414;
+    --panel-2: #1B1B1B;
+    --line: #1F1F1F;
+    --line-2: #2E2E2E;
+    --text: #FFFFFF;
+    --muted: #8F8F8F;
+    --blue: #1F3BF0;
+    --blue-hover: #3450FF;
+    --sans: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+    --display: "Inter Tight", "Inter", system-ui, sans-serif;
+    --mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+    color-scheme: dark;
     box-sizing: border-box;
     padding-top: env(safe-area-inset-top, 0px);
     padding-bottom: env(safe-area-inset-bottom, 0px);
   }
-  @media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) {
-      --bg: #15162A; --ink: #F3F1E4; --card: #202238; --soft: #B6B8CC;
-      --grid: rgba(255, 210, 63, 0.08); --cobalt: #FFD23F; --on-cobalt: #15162A; --pick: #FFD23F;
-      color-scheme: dark;
-    }
-  }
-  :root[data-theme="dark"] {
-    --bg: #15162A; --ink: #F3F1E4; --card: #202238; --soft: #B6B8CC;
-    --grid: rgba(255, 210, 63, 0.08); --cobalt: #FFD23F; --on-cobalt: #15162A; --pick: #FFD23F;
-    color-scheme: dark;
-  }
-  html { scroll-padding-top: env(safe-area-inset-top, 0px); }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --bg: #000000; } }
+  :root[data-theme="dark"] { --bg: #000000; }
   *, *::before, *::after { box-sizing: inherit; }
-  body {
-    margin: 0; background-color: var(--bg); color: var(--ink);
-    font: 17px/1.5 "Instrument Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
-    background-image:
-      linear-gradient(var(--grid) 1px, transparent 1px),
-      linear-gradient(90deg, var(--grid) 1px, transparent 1px);
-    background-size: 28px 28px;
+  html { scroll-padding-top: calc(72px + env(safe-area-inset-top, 0px)); }
+  body { margin: 0; background: var(--bg); color: var(--text); font: 16px/1.5 var(--sans); -webkit-font-smoothing: antialiased; }
+  a { color: inherit; }
+  button { font: inherit; color: inherit; }
+  :focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
+
+  header {
+    position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--bg);
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 20px 30px; border-bottom: 1px solid var(--line);
   }
-  main { max-width: 1080px; margin: 0 auto; padding: 48px 20px 80px; }
-  h1 {
-    font-family: "Bricolage Grotesque", "Instrument Sans", system-ui, sans-serif;
-    font-weight: 800; font-size: clamp(2.2rem, 6vw, 4rem); line-height: 1; letter-spacing: -0.03em;
-    margin: 0 0 16px; max-width: 14ch;
+  .wordmark { font-family: var(--display); font-weight: 500; letter-spacing: -0.01em; text-decoration: none; font-size: 1.05rem; }
+  nav { display: flex; gap: 24px; }
+  nav a { text-transform: uppercase; font-size: 0.85rem; color: var(--muted); text-decoration: none; }
+  nav a:hover { color: var(--text); }
+
+  .layout { display: grid; grid-template-columns: minmax(0, 380px) minmax(0, 1fr); min-height: calc(100vh - 69px); }
+  @media (max-width: 860px) { .layout { grid-template-columns: 1fr; } nav { display: none; } }
+
+  aside {
+    border-right: 1px solid var(--line); display: flex; flex-direction: column;
+    position: sticky; top: 69px; height: calc(100vh - 69px); overflow-y: auto;
   }
-  .lede { margin: 0 0 28px; max-width: 56ch; color: var(--soft); }
-  .lede b { color: var(--ink); }
-  .bar { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 32px; }
-  button, .btn {
-    font: inherit; font-weight: 600; font-size: 0.95rem; color: var(--ink); background: var(--card);
-    border: 2.5px solid var(--ink); border-radius: 4px; padding: 10px 16px; cursor: pointer;
-    text-decoration: none; display: inline-flex; align-items: center; gap: 6px;
-    box-shadow: 3px 3px 0 var(--ink); transition: transform .08s, box-shadow .08s;
+  @media (max-width: 860px) { aside { position: static; height: auto; border-right: 0; border-bottom: 1px solid var(--line); } }
+  .intro { padding: 32px 30px 28px; }
+  h1 { font-family: var(--display); font-weight: 500; font-size: clamp(2rem, 3.4vw, 2.6rem); line-height: 1.05; letter-spacing: -0.035em; margin: 0 0 16px; }
+  .sub { color: var(--muted); margin: 0; max-width: 34ch; }
+  .sub b { color: var(--text); font-weight: 500; }
+  dl { margin: 0; border-top: 1px solid var(--line); }
+  .rowkv { display: grid; grid-template-columns: 110px 1fr; gap: 12px; padding: 16px 30px; border-bottom: 1px solid var(--line); }
+  dt { color: var(--muted); }
+  dd { margin: 0; }
+  .cta { margin-top: auto; padding: 30px; display: grid; gap: 14px; }
+  .btn {
+    display: flex; justify-content: space-between; align-items: center; gap: 12px;
+    padding: 18px; border: 0; border-radius: 0; cursor: pointer; text-decoration: none;
+    text-transform: uppercase; font-size: 0.92rem; background: var(--panel); color: var(--text);
   }
-  button:active, .btn:active { transform: translate(3px, 3px); box-shadow: 0 0 0 var(--ink); }
-  button:focus-visible, .btn:focus-visible { outline: 3px solid var(--cobalt); outline-offset: 3px; }
-  .primary { background: var(--ink); color: var(--bg); }
-  .list { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr)); gap: 20px; list-style: none; padding: 0; margin: 0; }
-  .item {
-    background: var(--card); border: 2.5px solid var(--ink); border-radius: 4px; padding: 20px;
-    display: flex; flex-direction: column; gap: 16px; box-shadow: 6px 6px 0 var(--ink);
+  .btn:hover { background: var(--panel-2); }
+  .btn.blue { background: var(--blue); }
+  .btn.blue:hover { background: var(--blue-hover); }
+  .btn svg { width: 18px; height: 18px; flex: none; }
+
+  main { padding: 32px 30px 80px; min-width: 0; }
+  .filters { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 28px; }
+  .chip {
+    text-transform: uppercase; font-size: 0.85rem; color: var(--muted); background: transparent;
+    border: 1px dashed var(--line-2); border-radius: 0; padding: 9px 18px; cursor: pointer;
   }
-  .item.picked { outline: 4px solid var(--pick); outline-offset: 4px; }
-  .text {
-    font-family: "Bricolage Grotesque", "Instrument Sans", system-ui, sans-serif;
-    font-weight: 600; font-size: 1.2rem; line-height: 1.3; margin: 0; flex: 1; overflow-wrap: anywhere;
+  .chip:hover { color: var(--text); }
+  .chip[aria-pressed="true"] { background: var(--blue); border-color: var(--blue); color: #fff; }
+
+  ul { list-style: none; margin: 0; padding: 0; }
+  .item { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 16px 32px; padding: 26px 0; border-top: 1px solid var(--line); }
+  .item:last-child { border-bottom: 1px solid var(--line); }
+  .item.picked { background: linear-gradient(90deg, rgba(31, 59, 240, .14), transparent 70%); }
+  .text { font-family: var(--display); font-weight: 400; font-size: clamp(1.25rem, 2.2vw, 1.8rem); line-height: 1.2; letter-spacing: -0.02em; margin: 0 0 14px; overflow-wrap: anywhere; }
+  .tag { display: inline-flex; align-items: end; gap: 0; font-size: 0.78rem; text-transform: uppercase; }
+  .tag::before { content: ""; width: 6px; height: 4px; background: var(--blue); margin-right: 0; }
+  .tag span { background: var(--panel); padding: 3px 7px; }
+  .actions { display: flex; gap: 8px; align-items: start; flex-wrap: wrap; justify-content: end; }
+  .act {
+    font-family: var(--mono); font-size: 0.76rem; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--muted); background: transparent; border: 1px solid var(--line-2); border-radius: 0;
+    padding: 9px 12px; cursor: pointer; text-decoration: none; white-space: nowrap;
   }
-  .row { display: flex; gap: 8px; flex-wrap: wrap; }
-  .row button, .row .btn { padding: 8px 12px; font-size: 0.88rem; box-shadow: 2px 2px 0 var(--ink); }
-  .row .copied { background: var(--cobalt); color: var(--on-cobalt); }
+  .act:hover { color: var(--text); border-color: var(--muted); }
+  .act.copy { color: #fff; background: var(--blue); border-color: var(--blue); }
+  .act.copy:hover { background: var(--blue-hover); }
+  .act.copy.done { background: var(--panel-2); border-color: var(--line-2); }
+  @media (max-width: 640px) { .item { grid-template-columns: 1fr; } .actions { justify-content: start; } }
+
   .toast {
-    position: fixed; left: 50%; bottom: calc(24px + env(safe-area-inset-bottom, 0px));
-    transform: translate(-50%, 20px); opacity: 0; background: var(--ink); color: var(--bg);
-    padding: 10px 18px; border-radius: 4px; font-weight: 600; transition: .2s ease; pointer-events: none;
+    position: fixed; left: 50%; bottom: calc(24px + env(safe-area-inset-bottom, 0px)); transform: translate(-50%, 16px);
+    opacity: 0; background: var(--panel); border: 1px solid var(--line-2); padding: 12px 18px;
+    font-family: var(--mono); font-size: 0.8rem; letter-spacing: 0.06em; text-transform: uppercase;
+    transition: .2s ease; pointer-events: none;
   }
   .toast.show { opacity: 1; transform: translate(-50%, 0); }
-  @media (prefers-reduced-motion: reduce) { .toast, button, .btn { transition: none; } }
+  @media (prefers-reduced-motion: reduce) { .toast { transition: none; } }  .brief { margin-bottom: 64px; }
+  .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  .when { display: flex; flex-wrap: wrap; gap: 8px 24px; align-items: baseline; background: var(--panel); border-left: 3px solid var(--blue); padding: 20px 24px; margin-bottom: 40px; }
+  .when b { font-family: var(--display); font-weight: 500; font-size: 1.35rem; letter-spacing: -0.02em; }
+  .when span { color: var(--muted); }
+  .sec { border-top: 1px solid var(--line); padding: 28px 0; display: grid; grid-template-columns: minmax(0, 220px) minmax(0, 1fr); gap: 12px 40px; }
+  @media (max-width: 760px) { .sec { grid-template-columns: 1fr; } }
+  .sec h2 { font-family: var(--mono); font-weight: 400; font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin: 4px 0 0; }
+  .body { max-width: 68ch; }
+  .body p { margin: 0 0 14px; color: #CFCFCF; }
+  .body p:last-child { margin-bottom: 0; }
+  .body strong { color: var(--text); font-weight: 500; }
+  ol.steps, ul.points { margin: 0; padding: 0; list-style: none; }
+  ol.steps { counter-reset: s; }
+  ol.steps li { counter-increment: s; display: grid; grid-template-columns: 36px 1fr; padding: 10px 0; color: #CFCFCF; }
+  ol.steps li::before { content: counter(s, decimal-leading-zero); font-family: var(--mono); font-size: 0.8rem; color: var(--blue); padding-top: 3px; }
+  ul.points li { padding: 8px 0 8px 18px; position: relative; color: #CFCFCF; }
+  ul.points li::before { content: ""; position: absolute; left: 0; top: 17px; width: 6px; height: 6px; background: var(--blue); }
+  .think { display: flex; flex-wrap: wrap; gap: 10px; }
+  .think span { font-family: var(--display); font-size: 1.05rem; letter-spacing: -0.01em; background: var(--panel); padding: 10px 14px; }
+  .angle { padding: 18px 0; border-bottom: 1px solid var(--line); }
+  .angle:first-child { padding-top: 0; }
+  .angle:last-child { border-bottom: 0; padding-bottom: 0; }
+  .angle h3 { font-family: var(--display); font-weight: 500; font-size: 1.2rem; letter-spacing: -0.015em; margin: 0 0 6px; }
+  .angle p { margin: 0 0 10px; }
+  .ex { font-family: var(--display); font-size: 1rem; padding: 10px 14px; margin: 6px 0 0 !important; background: var(--panel); color: var(--text) !important; }
+  .ex.no { color: var(--muted) !important; }
+  .ex i { font-style: normal; font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; margin-right: 10px; color: var(--blue); }
+  .ex.no i { color: #8a8a8a; }
+  .listhead { margin-bottom: 20px; }
+  .listhead h2 { font-family: var(--display); font-weight: 500; font-size: clamp(1.8rem, 3vw, 2.4rem); letter-spacing: -0.03em; line-height: 1.05; margin: 0; }
+  .act.copy { color: var(--text); background: transparent; border-color: var(--muted); }
+  .act.copy:hover, .act.copy.done { background: var(--blue); border-color: var(--blue); }
+
 </style>
 </head>
 <body>
-<main>
-  <h1>Pick a comment, any comment</h1>
-  <p class="lede">Thank you for hyping us up! Copy any line and drop it on our launch post, or tap <b>Reply on X</b> to open a reply with it already filled in. Tweak the words however you like.</p>
+<header>
+  <a class="wordmark" href="https://www.pixeluplabs.com/" target="_blank" rel="noopener">PIXELUP LABS</a>
+  <nav>
+    <a href="#brief">Brief</a>
+    <a href="#comments">Comments</a>
+    <a href="https://www.pixeluplabs.com/case-studies" target="_blank" rel="noopener">Case studies</a>
+    <a href="https://x.com/pixeluplabs" target="_blank" rel="noopener">X</a>
+  </nav>
+</header>
 
-  <div class="bar">
-    <button class="primary" id="surprise" type="button">Pick one for me</button>
-    <a class="btn" id="openPost" target="_blank" rel="noopener">Open the post on X</a>
-  </div>
+<div class="layout">
+  <aside>
+    <div class="intro">
+      <h1>Launch day brief</h1>
+      <p class="sub">Thank you for hyping us up. This covers <b>when to post, what to do, and what to say</b>, plus 40 lines you can copy.</p>
+    </div>
+    <dl>
+      <div class="rowkv"><dt>Post</dt><dd>Brands we want to work with</dd></div>
+      <div class="rowkv"><dt>Live</dt><dd id="liveTime">8:15 am PT</dd></div>
+      <div class="rowkv"><dt>Window</dt><dd>Within 20 min of getting the link</dd></div>
+      <div class="rowkv"><dt>Do</dt><dd>Repost, quote, comment</dd></div>
+    </dl>
+    <div class="cta">
+      <a class="btn" id="openPost" target="_blank" rel="noopener">Open the post on X
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+      <button class="btn blue" id="surprise" type="button">Pick one for me
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></button>
+    </div>
+  </aside>
 
-  <ul class="list" id="list"></ul>
-</main>
+  <main>
+    <section class="brief" id="brief" aria-labelledby="brief-title">
+      <h2 class="sr" id="brief-title">Launch brief</h2>
+      <div class="when"><b>Wed 14 Oct, 8:15 to 8:45 am PT</b><span>11:15 am ET, 4:15 pm UK, 8:45 pm IST</span></div>
+
+      <div class="sec"><h2>What to do</h2><div class="body">
+        <ol class="steps">
+          <li><span><strong>Repost</strong> the launch post.</span></li>
+          <li><span><strong>Quote it</strong> with your own take. If we've worked together, add a screenshot of the work we did for you.</span></li>
+          <li><span><strong>Comment under the original post.</strong> Need a line? Pick one from the list below.</span></li>
+        </ol>
+        <p>All three is ideal. Even one helps a lot.</p>
+      </div></div>
+
+      <div class="sec"><h2>Getting the link</h2><div class="body">
+        <ol class="steps">
+          <li><span>The post goes live at <strong>8:15 am PT</strong>, so there's no link before then.</span></li>
+          <li><span>Daksh will send it to you on X or WhatsApp between <strong>8:15 and 8:20 am PT</strong>. Keep your phone close.</span></li>
+          <li><span><strong>Post within 20 minutes</strong> of getting the link. The first half hour decides how far it travels.</span></li>
+          <li><span>In India that's <strong>8:45 pm IST</strong>. Can't make the window? Tell Daksh now and we'll work around it.</span></li>
+        </ol>
+      </div></div>
+
+      <div class="sec"><h2>What the post is</h2><div class="body">
+        <p>A public list of the brands we'd love to work with next, including Mintlify, Replit, Databricks, Zapier, Firecrawl and Resend. <strong>Their founders are tagged in the post.</strong></p>
+        <p>We're shooting our shot in public. Every repost, quote and comment puts it in front of more of the right people, and a word from someone they already know lands far better than anything we can say ourselves.</p>
+      </div></div>
+
+      <div class="sec"><h2>Who we are</h2><div class="body">
+        <p><strong>PIXELUP LABS is the enterprise-readiness design partner for funded B2B startups</strong>, most of them AI-native. We build brand, website and product design as one system, so enterprise buyers see a market leader, not a risky bet.</p>
+        <ul class="points">
+          <li><strong>Greptile</strong> doubled demo requests in week one and raised a $25M Series A within six months.</li>
+          <li><strong>Sully</strong> scaled 26x in 11 months after its redesign.</li>
+          <li><strong>Sainapse</strong> relaunched ahead of general availability and is now deployed by Fortune 500 companies like Ford and Freshworks.</li>
+        </ul>
+      </div></div>
+
+      <div class="sec"><h2>What people should think</h2><div class="body">
+        <div class="think">
+          <span>"These folks have receipts."</span>
+          <span>"If they did it for Greptile, they can do it for us."</span>
+          <span>"Bold. I like a studio with conviction."</span>
+          <span>"I should take that call."</span>
+        </div>
+      </div></div>
+
+      <div class="sec"><h2>Pick an angle</h2><div class="body">
+        <div class="angle">
+          <h3>Short or meme</h3>
+          <p>One line. Make the boldness the joke, or call out the founders on the list.</p>
+          <p class="ex"><i>Do</i>PIXELUP doing outbound to their dream clients in public. Respect.</p>
+          <p class="ex"><i>Do</i>Mintlify, Replit, Databricks: your move.</p>
+        </div>
+        <div class="angle">
+          <h3>Your POV</h3>
+          <p>Why brand and design decide whether enterprise buyers trust a startup, and why that matters for the companies on this list.</p>
+          <p class="ex"><i>Do</i>Great product isn't enough upmarket. Buyers judge you in 10 seconds on your site. This is the team I'd call.</p>
+        </div>
+        <div class="angle">
+          <h3>Receipts, if we've worked together</h3>
+          <p>The strongest format. Lead with what changed for you, be specific, and add a screenshot of the work. Only share results that are real.</p>
+          <p class="ex"><i>Do</i>PIXELUP rebuilt our brand and site. Demo requests went up the week we launched. If you're on this list, take the call.</p>
+          <p class="ex no"><i>Don't</i>PIXELUP are a great agency with an impressive process.</p>
+        </div>
+        <div class="angle">
+          <h3>One-line verdict</h3>
+          <p>Your honest take in a sentence. Confidence beats adjectives.</p>
+          <p class="ex"><i>Do</i>Best design call we made all year.</p>
+        </div>
+      </div></div>
+
+      <div class="sec"><h2>Important</h2><div class="body">
+        <ul class="points">
+          <li>Only claim results you actually saw. A vague true line beats a specific made-up one.</li>
+          <li>Tag at most one or two founders from the list, and only where it's natural. No hashtags.</li>
+          <li>If you've been paid or compensated in any way for posting, add a clear disclosure, such as X's paid partnership label.</li>
+          <li>Rewrite any line below in your own voice. Thirty people posting the same sentence looks fake.</li>
+        </ul>
+      </div></div>
+    </section>
+
+    <div class="listhead" id="comments"><h2>Need a line? Pick one</h2></div>
+
+    <div class="filters" role="group" aria-label="Filter comments" id="filters"></div>
+    <ul id="list"></ul>
+  </main>
+</div>
 <div class="toast" id="toast" role="status"></div>
 
 <script>
 // Paste the live X post link here once it's up.
-const POST_URL = "https://x.com/pixelup/status/REPLACE_ME";
+const POST_URL = "https://x.com/pixeluplabs/status/REPLACE_ME";
+const GO_LIVE_UTC = "2026-10-14T15:15:00Z";
 
 const COMMENTS = [
-  "PIXELUP is the real deal. If you're on this list, take the call 🔥",
-  "Founders on this list: answer the DM. Trust me on this one.",
-  "Some of the sharpest design work I've seen comes out of this team 👀",
-  "This list is about to get a lot shorter 😤",
-  "If your brand is on here, you're about to get a serious glow-up ✨",
-  "Love seeing this. Shooting your shot in public is the move 🙌",
-  "Calling it now: half this list says yes by Friday",
-  "Design that actually ships. Huge fan of this team 🚀",
-  "Bold move, great list, even better team",
-  "Hire them before your competitor does 👀",
-  "Easiest yes you'll make this quarter",
-  "Ambitious list. Ambitious team. Love it 🔥🔥",
-  "Whoever's on this list, you're in very good hands",
-  "This is how you do outbound in 2026 😂 respect",
-  "Say less. Go take the call.",
-  "The internet needs more of this energy ⚡",
-  "Sharp people, great taste, fast hands. Take the call.",
-  "Rooting for this one hard 🙌",
-  "Public manifesting, love it. Let's go PIXELUP 🚀",
-  "If I were on this list I'd already be in their DMs",
-  "Absolute builders. This list is lucky to be on it.",
-  "Taste this good doesn't stay available for long ⏳",
-  "Bookmark this. These folks are going places 📌",
-  "Main character energy from PIXELUP today 🔥",
-  "Every brand on this list just got a little cooler",
-  "Love the audacity. More of this please 🙌",
-  "The most fun launch on my timeline today 😂",
-  "Can confirm: these folks have taste.",
-  "Brands on this list, your next rebrand is one DM away 👀",
-  "This is the kind of post that ends up in pitch decks",
-  "Already forwarding this to a few founders I know",
-  "Respect the hustle. Go get 'em PIXELUP 💪",
-  "Design studios, take notes. This is how it's done.",
-  "Manifesting a collab with every single one of these 🙏",
-  "Quietly one of the best design teams out there",
-  "Big swing. Love it.",
-  "PIXELUP x anyone on this list would be elite",
-  "Founders, you won't regret this call",
-  "This list has great taste. So does PIXELUP 🔥",
-  "Saving this so I can say I saw it first 📌"
+  ["PIXELUP is the real deal. If you're on this list, take the call 🔥", "vouch"],
+  ["Founders on this list: answer the DM. Trust me on this one.", "vouch"],
+  ["Some of the sharpest design work I've seen comes out of this team 👀", "vouch"],
+  ["This list is about to get a lot shorter 😤", "funny"],
+  ["If your brand is on here, you're about to get a serious glow-up ✨", "hype"],
+  ["Love seeing this. Shooting your shot in public is the move 🙌", "hype"],
+  ["Calling it now: half this list says yes by Friday", "funny"],
+  ["Design that actually ships. Huge fan of this team 🚀", "vouch"],
+  ["Bold move, great list, even better team", "short"],
+  ["Hire them before your competitor does 👀", "short"],
+  ["Easiest yes you'll make this quarter", "short"],
+  ["Ambitious list. Ambitious team. Love it 🔥🔥", "hype"],
+  ["Whoever's on this list, you're in very good hands", "vouch"],
+  ["This is how you do outbound in 2026 😂 respect", "funny"],
+  ["Say less. Go take the call.", "short"],
+  ["The internet needs more of this energy ⚡", "hype"],
+  ["Sharp people, great taste, fast hands. Take the call.", "vouch"],
+  ["Rooting for this one hard 🙌", "short"],
+  ["Public manifesting, love it. Let's go PIXELUP 🚀", "hype"],
+  ["If I were on this list I'd already be in their DMs", "funny"],
+  ["Absolute builders. This list is lucky to be on it.", "vouch"],
+  ["Taste this good doesn't stay available for long ⏳", "hype"],
+  ["Bookmark this. These folks are going places 📌", "hype"],
+  ["Main character energy from PIXELUP today 🔥", "funny"],
+  ["Every brand on this list just got a little cooler", "hype"],
+  ["Love the audacity. More of this please 🙌", "hype"],
+  ["The most fun launch on my timeline today 😂", "funny"],
+  ["Can confirm: these folks have taste.", "short"],
+  ["Brands on this list, your next rebrand is one DM away 👀", "vouch"],
+  ["This is the kind of post that ends up in pitch decks", "funny"],
+  ["Already forwarding this to a few founders I know", "hype"],
+  ["Respect the hustle. Go get 'em PIXELUP 💪", "hype"],
+  ["Design studios, take notes. This is how it's done.", "hype"],
+  ["Manifesting a collab with every single one of these 🙏", "funny"],
+  ["Quietly one of the best design teams out there", "vouch"],
+  ["Big swing. Love it.", "short"],
+  ["PIXELUP x anyone on this list would be elite", "hype"],
+  ["Founders, you won't regret this call", "vouch"],
+  ["This list has great taste. So does PIXELUP 🔥", "short"],
+  ["Saving this so I can say I saw it first 📌", "funny"]
 ];
+const FILTERS = [["all", "All"], ["vouch", "Vouch"], ["hype", "Hype"], ["funny", "Funny"], ["short", "Short"]];
 
-const tweetId = (POST_URL.match(/status\/(\d+)/) || [])[1];
 const $ = id => document.getElementById(id);
-$("openPost").href = POST_URL.includes("REPLACE_ME") ? "https://x.com" : POST_URL;
+const tweetId = (POST_URL.match(/status\/(\d+)/) || [])[1];
+const live = !!tweetId;
+$("openPost").href = live ? POST_URL : "https://x.com/pixeluplabs";
 
-function replyHref(text) {
+try {
+  const d = new Date(GO_LIVE_UTC);
+  const t = new Intl.DateTimeFormat("en-US", { hour: "numeric", minute: "2-digit", timeZoneName: "short" }).format(d);
+  const day = new Intl.DateTimeFormat("en-US", { weekday: "short", day: "numeric", month: "short" }).format(d);
+  $("liveTime").textContent = `${day}, ${t.replace(" AM", " am").replace(" PM", " pm")} (your time)`;
+} catch {}
+
+const intent = (text, quote) => {
   const t = encodeURIComponent(text);
-  return tweetId ? `https://x.com/intent/tweet?in_reply_to=${tweetId}&text=${t}` : "https://x.com";
-}
-function quoteHref(text) {
-  const t = encodeURIComponent(text);
-  return tweetId ? `https://x.com/intent/tweet?text=${t}&url=${encodeURIComponent(POST_URL)}` : "https://x.com";
-}
+  if (!live) return "https://x.com/pixeluplabs";
+  return quote ? `https://x.com/intent/tweet?text=${t}&url=${encodeURIComponent(POST_URL)}`
+               : `https://x.com/intent/tweet?in_reply_to=${tweetId}&text=${t}`;
+};
 
 const list = $("list");
-const order = COMMENTS.map((_, i) => i).sort(() => Math.random() - 0.5);
-order.forEach(i => {
-  const text = COMMENTS[i];
+COMMENTS.map((c, i) => [c, i]).sort(() => Math.random() - 0.5).forEach(([[text, cat]]) => {
   const li = document.createElement("li");
-  li.className = "item";
-  li.innerHTML = `
-    <p class="text"></p>
-    <div class="row">
-      <button type="button" class="copy">Copy</button>
-      <a class="btn" target="_blank" rel="noopener" href="${replyHref(text)}">Reply on X</a>
-      <a class="btn" target="_blank" rel="noopener" href="${quoteHref(text)}">Quote post</a>
+  li.className = "item"; li.dataset.cat = cat;
+  li.innerHTML = `<div><p class="text"></p><span class="tag"><span>${cat}</span></span></div>
+    <div class="actions">
+      <button class="act copy" type="button">Copy</button>
+      <a class="act" target="_blank" rel="noopener" href="${intent(text)}">Reply on X</a>
+      <a class="act" target="_blank" rel="noopener" href="${intent(text, true)}">Quote</a>
     </div>`;
   li.querySelector(".text").textContent = text;
   li.querySelector(".copy").addEventListener("click", e => copy(text, e.currentTarget));
   list.appendChild(li);
 });
 
+FILTERS.forEach(([key, label], i) => {
+  const b = document.createElement("button");
+  b.className = "chip"; b.type = "button"; b.textContent = label;
+  b.setAttribute("aria-pressed", i === 0 ? "true" : "false");
+  b.addEventListener("click", () => {
+    document.querySelectorAll(".chip").forEach(c => c.setAttribute("aria-pressed", "false"));
+    b.setAttribute("aria-pressed", "true");
+    [...list.children].forEach(li => li.hidden = key !== "all" && li.dataset.cat !== key);
+  });
+  $("filters").appendChild(b);
+});
+
 async function copy(text, btn) {
   try { await navigator.clipboard.writeText(text); }
   catch {
-    const ta = document.createElement("textarea");
-    ta.value = text; document.body.appendChild(ta); ta.select();
-    document.execCommand("copy"); ta.remove();
+    const ta = document.createElement("textarea"); ta.value = text; document.body.appendChild(ta);
+    ta.select(); document.execCommand("copy"); ta.remove();
   }
-  document.querySelectorAll(".copy.copied").forEach(b => { b.classList.remove("copied"); b.textContent = "Copy"; });
-  if (btn) { btn.classList.add("copied"); btn.textContent = "Copied"; }
-  const toast = $("toast");
-  toast.textContent = "Comment copied. Paste it on the post!";
-  toast.classList.add("show");
-  clearTimeout(copy.t); copy.t = setTimeout(() => toast.classList.remove("show"), 1800);
+  document.querySelectorAll(".act.copy.done").forEach(b => { b.classList.remove("done"); b.textContent = "Copy"; });
+  if (btn) { btn.classList.add("done"); btn.textContent = "Copied"; }
+  const toast = $("toast"); toast.textContent = "Copied. Paste it on the post";
+  toast.classList.add("show"); clearTimeout(copy.t); copy.t = setTimeout(() => toast.classList.remove("show"), 1800);
 }
 
 $("surprise").addEventListener("click", () => {
-  const items = [...list.children];
+  const items = [...list.children].filter(li => !li.hidden);
   items.forEach(el => el.classList.remove("picked"));
   const el = items[Math.floor(Math.random() * items.length)];
   el.classList.add("picked");
-  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
-  el.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "center" });
+  el.scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "center" });
   el.querySelector(".copy").focus({ preventScroll: true });
 });
 </script>
