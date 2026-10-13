@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Pick a comment for PIXELUP's launch</title>
+<meta name="description" content="Pick a comment, copy it, and drop it on PIXELUP's launch post on X.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔥</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Instrument+Sans:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #FFD23F;
+    --ink: #14162B;
+    --card: #FFFFFF;
+    --soft: #4A4D66;
+    --grid: rgba(20, 22, 43, 0.07);
+    --cobalt: #2B44FF;
+    --on-cobalt: #FFFFFF;
+    --pick: #2B44FF;
+    color-scheme: light;
+    box-sizing: border-box;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #15162A; --ink: #F3F1E4; --card: #202238; --soft: #B6B8CC;
+      --grid: rgba(255, 210, 63, 0.08); --cobalt: #FFD23F; --on-cobalt: #15162A; --pick: #FFD23F;
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #15162A; --ink: #F3F1E4; --card: #202238; --soft: #B6B8CC;
+    --grid: rgba(255, 210, 63, 0.08); --cobalt: #FFD23F; --on-cobalt: #15162A; --pick: #FFD23F;
+    color-scheme: dark;
+  }
+  html { scroll-padding-top: env(safe-area-inset-top, 0px); }
+  *, *::before, *::after { box-sizing: inherit; }
+  body {
+    margin: 0; background-color: var(--bg); color: var(--ink);
+    font: 17px/1.5 "Instrument Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+    background-image:
+      linear-gradient(var(--grid) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+    background-size: 28px 28px;
+  }
+  main { max-width: 1080px; margin: 0 auto; padding: 48px 20px 80px; }
+  h1 {
+    font-family: "Bricolage Grotesque", "Instrument Sans", system-ui, sans-serif;
+    font-weight: 800; font-size: clamp(2.2rem, 6vw, 4rem); line-height: 1; letter-spacing: -0.03em;
+    margin: 0 0 16px; max-width: 14ch;
+  }
+  .lede { margin: 0 0 28px; max-width: 56ch; color: var(--soft); }
+  .lede b { color: var(--ink); }
+  .bar { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 32px; }
+  button, .btn {
+    font: inherit; font-weight: 600; font-size: 0.95rem; color: var(--ink); background: var(--card);
+    border: 2.5px solid var(--ink); border-radius: 4px; padding: 10px 16px; cursor: pointer;
+    text-decoration: none; display: inline-flex; align-items: center; gap: 6px;
+    box-shadow: 3px 3px 0 var(--ink); transition: transform .08s, box-shadow .08s;
+  }
+  button:active, .btn:active { transform: translate(3px, 3px); box-shadow: 0 0 0 var(--ink); }
+  button:focus-visible, .btn:focus-visible { outline: 3px solid var(--cobalt); outline-offset: 3px; }
+  .primary { background: var(--ink); color: var(--bg); }
+  .list { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr)); gap: 20px; list-style: none; padding: 0; margin: 0; }
+  .item {
+    background: var(--card); border: 2.5px solid var(--ink); border-radius: 4px; padding: 20px;
+    display: flex; flex-direction: column; gap: 16px; box-shadow: 6px 6px 0 var(--ink);
+  }
+  .item.picked { outline: 4px solid var(--pick); outline-offset: 4px; }
+  .text {
+    font-family: "Bricolage Grotesque", "Instrument Sans", system-ui, sans-serif;
+    font-weight: 600; font-size: 1.2rem; line-height: 1.3; margin: 0; flex: 1; overflow-wrap: anywhere;
+  }
+  .row { display: flex; gap: 8px; flex-wrap: wrap; }
+  .row button, .row .btn { padding: 8px 12px; font-size: 0.88rem; box-shadow: 2px 2px 0 var(--ink); }
+  .row .copied { background: var(--cobalt); color: var(--on-cobalt); }
+  .toast {
+    position: fixed; left: 50%; bottom: calc(24px + env(safe-area-inset-bottom, 0px));
+    transform: translate(-50%, 20px); opacity: 0; background: var(--ink); color: var(--bg);
+    padding: 10px 18px; border-radius: 4px; font-weight: 600; transition: .2s ease; pointer-events: none;
+  }
+  .toast.show { opacity: 1; transform: translate(-50%, 0); }
+  @media (prefers-reduced-motion: reduce) { .toast, button, .btn { transition: none; } }
+</style>
+</head>
+<body>
+<main>
+  <h1>Pick a comment, any comment</h1>
+  <p class="lede">Thank you for hyping us up! Copy any line and drop it on our launch post, or tap <b>Reply on X</b> to open a reply with it already filled in. Tweak the words however you like.</p>
+
+  <div class="bar">
+    <button class="primary" id="surprise" type="button">Pick one for me</button>
+    <a class="btn" id="openPost" target="_blank" rel="noopener">Open the post on X</a>
+  </div>
+
+  <ul class="list" id="list"></ul>
+</main>
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+// Paste the live X post link here once it's up.
+const POST_URL = "https://x.com/pixelup/status/REPLACE_ME";
+
+const COMMENTS = [
+  "PIXELUP is the real deal. If you're on this list, take the call 🔥",
+  "Founders on this list: answer the DM. Trust me on this one.",
+  "Some of the sharpest design work I've seen comes out of this team 👀",
+  "This list is about to get a lot shorter 😤",
+  "If your brand is on here, you're about to get a serious glow-up ✨",
+  "Love seeing this. Shooting your shot in public is the move 🙌",
+  "Calling it now: half this list says yes by Friday",
+  "Design that actually ships. Huge fan of this team 🚀",
+  "Bold move, great list, even better team",
+  "Hire them before your competitor does 👀",
+  "Easiest yes you'll make this quarter",
+  "Ambitious list. Ambitious team. Love it 🔥🔥",
+  "Whoever's on this list, you're in very good hands",
+  "This is how you do outbound in 2026 😂 respect",
+  "Say less. Go take the call.",
+  "The internet needs more of this energy ⚡",
+  "Sharp people, great taste, fast hands. Take the call.",
+  "Rooting for this one hard 🙌",
+  "Public manifesting, love it. Let's go PIXELUP 🚀",
+  "If I were on this list I'd already be in their DMs",
+  "Absolute builders. This list is lucky to be on it.",
+  "Taste this good doesn't stay available for long ⏳",
+  "Bookmark this. These folks are going places 📌",
+  "Main character energy from PIXELUP today 🔥",
+  "Every brand on this list just got a little cooler",
+  "Love the audacity. More of this please 🙌",
+  "The most fun launch on my timeline today 😂",
+  "Can confirm: these folks have taste.",
+  "Brands on this list, your next rebrand is one DM away 👀",
+  "This is the kind of post that ends up in pitch decks",
+  "Already forwarding this to a few founders I know",
+  "Respect the hustle. Go get 'em PIXELUP 💪",
+  "Design studios, take notes. This is how it's done.",
+  "Manifesting a collab with every single one of these 🙏",
+  "Quietly one of the best design teams out there",
+  "Big swing. Love it.",
+  "PIXELUP x anyone on this list would be elite",
+  "Founders, you won't regret this call",
+  "This list has great taste. So does PIXELUP 🔥",
+  "Saving this so I can say I saw it first 📌"
+];
+
+const tweetId = (POST_URL.match(/status\/(\d+)/) || [])[1];
+const $ = id => document.getElementById(id);
+$("openPost").href = POST_URL.includes("REPLACE_ME") ? "https://x.com" : POST_URL;
+
+function replyHref(text) {
+  const t = encodeURIComponent(text);
+  return tweetId ? `https://x.com/intent/tweet?in_reply_to=${tweetId}&text=${t}` : "https://x.com";
+}
+function quoteHref(text) {
+  const t = encodeURIComponent(text);
+  return tweetId ? `https://x.com/intent/tweet?text=${t}&url=${encodeURIComponent(POST_URL)}` : "https://x.com";
+}
+
+const list = $("list");
+const order = COMMENTS.map((_, i) => i).sort(() => Math.random() - 0.5);
+order.forEach(i => {
+  const text = COMMENTS[i];
+  const li = document.createElement("li");
+  li.className = "item";
+  li.innerHTML = `
+    <p class="text"></p>
+    <div class="row">
+      <button type="button" class="copy">Copy</button>
+      <a class="btn" target="_blank" rel="noopener" href="${replyHref(text)}">Reply on X</a>
+      <a class="btn" target="_blank" rel="noopener" href="${quoteHref(text)}">Quote post</a>
+    </div>`;
+  li.querySelector(".text").textContent = text;
+  li.querySelector(".copy").addEventListener("click", e => copy(text, e.currentTarget));
+  list.appendChild(li);
+});
+
+async function copy(text, btn) {
+  try { await navigator.clipboard.writeText(text); }
+  catch {
+    const ta = document.createElement("textarea");
+    ta.value = text; document.body.appendChild(ta); ta.select();
+    document.execCommand("copy"); ta.remove();
+  }
+  document.querySelectorAll(".copy.copied").forEach(b => { b.classList.remove("copied"); b.textContent = "Copy"; });
+  if (btn) { btn.classList.add("copied"); btn.textContent = "Copied"; }
+  const toast = $("toast");
+  toast.textContent = "Comment copied. Paste it on the post!";
+  toast.classList.add("show");
+  clearTimeout(copy.t); copy.t = setTimeout(() => toast.classList.remove("show"), 1800);
+}
+
+$("surprise").addEventListener("click", () => {
+  const items = [...list.children];
+  items.forEach(el => el.classList.remove("picked"));
+  const el = items[Math.floor(Math.random() * items.length)];
+  el.classList.add("picked");
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  el.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "center" });
+  el.querySelector(".copy").focus({ preventScroll: true });
+});
+</script>
+</body>
+</html>
