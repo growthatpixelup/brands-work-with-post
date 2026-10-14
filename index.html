@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Launch day brief - PIXELUP LABS</title>
-<meta name="description" content="Pick a comment and drop it on PIXELUP LABS' launch post on X.">
+<title>Launch day brief - Pixelup Labs</title>
+<meta name="description" content="Pick a comment and drop it on Pixelup Labs' launch post on X.">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔥</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -103,6 +103,9 @@
   .act.copy.done { background: var(--panel-2); border-color: var(--line-2); }
   @media (max-width: 640px) { .item { grid-template-columns: 1fr; } .actions { justify-content: start; } }
 
+  [hidden] { display: none !important; }
+  .act:disabled { opacity: .4; cursor: not-allowed; }
+  .act:disabled:hover { color: var(--muted); border-color: var(--line-2); }
   .toast {
     position: fixed; left: 50%; bottom: calc(24px + env(safe-area-inset-bottom, 0px)); transform: translate(-50%, 16px);
     opacity: 0; background: var(--panel); border: 1px solid var(--line-2); padding: 12px 18px;
@@ -148,7 +151,7 @@
 </head>
 <body>
 <header>
-  <a class="wordmark" href="https://www.pixeluplabs.com/" target="_blank" rel="noopener">PIXELUP LABS</a>
+  <a class="wordmark" href="https://www.pixeluplabs.com/" target="_blank" rel="noopener">Pixelup Labs</a>
   <nav>
     <a href="#brief">Brief</a>
     <a href="#comments">Comments</a>
@@ -206,7 +209,7 @@
       </div></div>
 
       <div class="sec"><h2>Who we are</h2><div class="body">
-        <p><strong>PIXELUP LABS is the enterprise-readiness design partner for funded B2B startups</strong>, most of them AI-native. We build brand, website and product design as one system, so enterprise buyers see a market leader, not a risky bet.</p>
+        <p><strong>Pixelup Labs is the enterprise-readiness design partner for funded B2B startups</strong>, most of them AI-native. We build brand, website and product design as one system, so enterprise buyers see a market leader, not a risky bet.</p>
         <ul class="points">
           <li><strong>Greptile</strong> doubled demo requests in week one and raised a $25M Series A within six months.</li>
           <li><strong>Sully</strong> scaled 26x in 11 months after its redesign.</li>
@@ -227,7 +230,7 @@
         <div class="angle">
           <h3>Short or meme</h3>
           <p>One line. Make the boldness the joke, or call out the founders on the list.</p>
-          <p class="ex"><i>Do</i>PIXELUP doing outbound to their dream clients in public. Respect.</p>
+          <p class="ex"><i>Do</i>Pixelup doing outbound to their dream clients in public. Respect.</p>
           <p class="ex"><i>Do</i>Mintlify, Replit, Databricks: your move.</p>
         </div>
         <div class="angle">
@@ -238,8 +241,8 @@
         <div class="angle">
           <h3>Receipts, if we've worked together</h3>
           <p>The strongest format. Lead with what changed for you, be specific, and add a screenshot of the work. Only share results that are real.</p>
-          <p class="ex"><i>Do</i>PIXELUP rebuilt our brand and site. Demo requests went up the week we launched. If you're on this list, take the call.</p>
-          <p class="ex no"><i>Don't</i>PIXELUP are a great agency with an impressive process.</p>
+          <p class="ex"><i>Do</i>Pixelup rebuilt our brand and site. Demo requests went up the week we launched. If you're on this list, take the call.</p>
+          <p class="ex no"><i>Don't</i>Pixelup are a great agency with an impressive process.</p>
         </div>
         <div class="angle">
           <h3>One-line verdict</h3>
@@ -272,46 +275,46 @@ const POST_URL = "https://x.com/pixeluplabs/status/REPLACE_ME";
 const GO_LIVE_UTC = "2026-10-14T15:15:00Z";
 
 const COMMENTS = [
-  ["PIXELUP is the real deal. If you're on this list, take the call 🔥", "vouch"],
-  ["Founders on this list: answer the DM. Trust me on this one.", "vouch"],
-  ["Some of the sharpest design work I've seen comes out of this team 👀", "vouch"],
-  ["This list is about to get a lot shorter 😤", "funny"],
-  ["If your brand is on here, you're about to get a serious glow-up ✨", "hype"],
-  ["Love seeing this. Shooting your shot in public is the move 🙌", "hype"],
-  ["Calling it now: half this list says yes by Friday", "funny"],
-  ["Design that actually ships. Huge fan of this team 🚀", "vouch"],
-  ["Bold move, great list, even better team", "short"],
-  ["Hire them before your competitor does 👀", "short"],
-  ["Easiest yes you'll make this quarter", "short"],
-  ["Ambitious list. Ambitious team. Love it 🔥🔥", "hype"],
-  ["Whoever's on this list, you're in very good hands", "vouch"],
-  ["This is how you do outbound in 2026 😂 respect", "funny"],
-  ["Say less. Go take the call.", "short"],
-  ["The internet needs more of this energy ⚡", "hype"],
-  ["Sharp people, great taste, fast hands. Take the call.", "vouch"],
-  ["Rooting for this one hard 🙌", "short"],
-  ["Public manifesting, love it. Let's go PIXELUP 🚀", "hype"],
-  ["If I were on this list I'd already be in their DMs", "funny"],
-  ["Absolute builders. This list is lucky to be on it.", "vouch"],
-  ["Taste this good doesn't stay available for long ⏳", "hype"],
-  ["Bookmark this. These folks are going places 📌", "hype"],
-  ["Main character energy from PIXELUP today 🔥", "funny"],
-  ["Every brand on this list just got a little cooler", "hype"],
-  ["Love the audacity. More of this please 🙌", "hype"],
-  ["The most fun launch on my timeline today 😂", "funny"],
-  ["Can confirm: these folks have taste.", "short"],
-  ["Brands on this list, your next rebrand is one DM away 👀", "vouch"],
-  ["This is the kind of post that ends up in pitch decks", "funny"],
-  ["Already forwarding this to a few founders I know", "hype"],
-  ["Respect the hustle. Go get 'em PIXELUP 💪", "hype"],
-  ["Design studios, take notes. This is how it's done.", "hype"],
-  ["Manifesting a collab with every single one of these 🙏", "funny"],
-  ["Quietly one of the best design teams out there", "vouch"],
-  ["Big swing. Love it.", "short"],
-  ["PIXELUP x anyone on this list would be elite", "hype"],
-  ["Founders, you won't regret this call", "vouch"],
-  ["This list has great taste. So does PIXELUP 🔥", "short"],
-  ["Saving this so I can say I saw it first 📌", "funny"]
+  ["worked with them on our rebrand. they think about positioning before pixels, which is rarer than it should be", "vouch"],
+  ["they've been our design team for a while now. easy recommend", "vouch"],
+  ["one of the most low-ego, high-output teams I've worked with", "vouch"],
+  ["they actually push back on your brief. that's how you know they care", "vouch"],
+  ["can vouch. they understood our product faster than most of our new hires", "vouch"],
+  ["genuinely shipped faster than we could send feedback", "vouch"],
+  ["they made us look like the company we were trying to become", "vouch"],
+  ["speaking from experience: great taste, zero fluff", "vouch"],
+  ["we came in with a messy story and left with a clear one", "vouch"],
+  ["underrated team. glad to see them putting themselves out there", "vouch"],
+  ["love seeing a studio say exactly who they want to work with", "hype"],
+  ["this takes guts. rooting for you guys", "hype"],
+  ["more studios should do this instead of waiting on referrals", "hype"],
+  ["some great names on here. hope a few of them say yes", "hype"],
+  ["big fan of the work these folks have been putting out lately", "hype"],
+  ["ambitious list, and honestly they'd do great work with any of these", "hype"],
+  ["such a refreshing way to do a launch", "hype"],
+  ["been following their work for a while. fun next step", "hype"],
+  ["proud of this team. go get 'em", "hype"],
+  ["can't wait to see which one of these happens first", "hype"],
+  ["the most polite way to slide into a founder's DMs", "funny"],
+  ["manifesting in public. respect", "funny"],
+  ["this is the design studio version of a promposal", "funny"],
+  ["if I were on this list I'd be refreshing my inbox right now", "funny"],
+  ["someone screenshot this for the \"we called it\" post later", "funny"],
+  ["outbound but make it a tweet", "funny"],
+  ["bookmarking this so I can say I was here early", "funny"],
+  ["half these founders are going to pretend they didn't see this 😂", "funny"],
+  ["the confidence is unmatched and I'm here for it", "funny"],
+  ["calling it: at least one of these happens before the year's out", "funny"],
+  ["good people, great work", "short"],
+  ["can vouch 🙌", "short"],
+  ["love this", "short"],
+  ["rooting for this one", "short"],
+  ["legit team", "short"],
+  ["big fan", "short"],
+  ["bold. love it", "short"],
+  ["easy recommend", "short"],
+  ["they're the real deal", "short"],
+  ["let's go 🔥", "short"]
 ];
 const FILTERS = [["all", "All"], ["vouch", "Vouch"], ["hype", "Hype"], ["funny", "Funny"], ["short", "Short"]];
 
@@ -341,8 +344,11 @@ COMMENTS.map((c, i) => [c, i]).sort(() => Math.random() - 0.5).forEach(([[text, 
   li.innerHTML = `<div><p class="text"></p><span class="tag"><span>${cat}</span></span></div>
     <div class="actions">
       <button class="act copy" type="button">Copy</button>
-      <a class="act" target="_blank" rel="noopener" href="${intent(text)}">Reply on X</a>
-      <a class="act" target="_blank" rel="noopener" href="${intent(text, true)}">Quote</a>
+      ${live
+        ? `<a class="act" target="_blank" rel="noopener" href="${intent(text)}">Reply on X</a>
+      <a class="act" target="_blank" rel="noopener" href="${intent(text, true)}">Quote</a>`
+        : `<button class="act" type="button" disabled title="Works once the post is live">Reply on X</button>
+      <button class="act" type="button" disabled title="Works once the post is live">Quote</button>`}
     </div>`;
   li.querySelector(".text").textContent = text;
   li.querySelector(".copy").addEventListener("click", e => copy(text, e.currentTarget));
